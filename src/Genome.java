@@ -1,6 +1,7 @@
 import FormatIO.*;
 public class Genome {
 	private String[] genomeArray;
+	private String cuttingPoint;
 	
 	//constructor method to create the genomeArray
 	public Genome (String aFilePath, String aFileType, String aCuttingPoint) {
@@ -14,13 +15,67 @@ public class Genome {
 		 //	carriage return.
 
 		String genome = fin.readLine().replaceAll("\\[\"", "").replaceAll("\"\\]", "");
-
 		//Add the entries of the String genome to String array genomeArray using .slit("<delimiter>") 
 		genomeArray = genome.split("\", \"");
+		cuttingPoint = aCuttingPoint;
 		
 		fin.close();
 	}
 	
 	//accessor methods
 	public String[] getGenomeArray() { return genomeArray;}
+	
+	//find the last word in the genome sequence by comparing last letters to cutting point
+	public String getLastGenomeWord()
+	{
+		//assume the match is true
+		boolean match = true;
+		String arrayItem = "";
+		
+		//need to check every item in array if the match is true or not
+		for(int i = 0; i < genomeArray.length; i++)
+		{
+			//convert array item to string
+			arrayItem = genomeArray[i];
+			//for each character from right of this arrayItem
+			for (int j = 1; j <= cuttingPoint.length(); j++)
+			{
+				//	check if last character from this arrayItem matches last char on cuttingPoint
+				if (cuttingPoint.charAt(cuttingPoint.length() - j) == arrayItem.charAt(arrayItem.length() - j))
+					//char match, try next char from end
+				{
+					match = true;
+				} else
+					//no match, we have a winner, exit for loop.
+				{
+					match = false;
+					break;
+				}
+			}//end inner for loop
+			
+			if (!match)
+			{
+				return arrayItem;//return to main
+			}
+
+		//		yes: move to the next char in genomearray
+		//		no: move to next word this.genomearray
+		}//end outer for loop
+		
+		//the case if they all match, then we can't tell which one is the last.
+		return null;
+	}
+	
+	public String getGenomeWordMatch(Genome comparisonGenomeArray)
+	{
+		for (int i = 0; i < genomeArray[0].length();i++)
+		{}
+		//get an item from the this.genomearray
+		//get the longest word from another array, which is passed in as an object
+		//for each character from right of this.genomearray.entry[-1]
+		//	check if last character from this.genome array matches last char on comparison array
+		//		yes: move to the next char in genomearray
+		return "placeholder";
+	}
+	
 }

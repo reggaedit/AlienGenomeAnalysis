@@ -10,12 +10,22 @@ public class AlienAnalysis {
 		
 		//the Genome format takes three strings for writing the file.
 		Genome genOne = new Genome(filePath,fileType,"BC");
-		Genome genTwo = new Genome(filePath,fileType,"BC");
-		Genome genThree = new Genome(filePath,fileType,"BC");
-		Genome genFour = new Genome(filePath,fileType,"BC");
+		Genome genTwo = new Genome(filePath,fileType,"DE");
+		Genome genThree = new Genome(filePath,fileType,"DFAD");
+		Genome genFour = new Genome(filePath,fileType,"EDA");
 		
 		String[] genomeArrayOne = genOne.getGenomeArray();
+		String[] genomeArrayTwo = genTwo.getGenomeArray();
+		String[] genomeArrayThree = genThree.getGenomeArray();
+		String[] genomeArrayFour = genFour.getGenomeArray();
 		
+		System.out.println(genOne.getLastGenomeWord());
+		System.out.println(genTwo.getLastGenomeWord());
+		System.out.println(genThree.getLastGenomeWord());
+		System.out.println(genFour.getLastGenomeWord());
+		
+		
+		/*
 		//iterate through array to print each entry.
 		for(int i = 0; i <= genomeArrayOne.length; i++)
 		{
@@ -27,6 +37,7 @@ public class AlienAnalysis {
 				System.err.println("Reached end of array.");
 			}
 		}
+		*/
 		System.exit(0);
 	}
 }
