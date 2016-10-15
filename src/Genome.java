@@ -1,7 +1,10 @@
+import java.util.Arrays;
+
 import FormatIO.*;
 public class Genome {
 	private String[] genomeArray;
 	private String cuttingPoint;
+	private String lastGenomeWord;
 	
 	//constructor method to create the genomeArray
 	public Genome (String aFilePath, String aFileType, String aCuttingPoint) {
@@ -9,21 +12,24 @@ public class Genome {
 		//read the file from disk
 		FileIn fin = new FileIn(aFilePath + aFileType + aCuttingPoint);
 		
-		 //Use replaceAll with RegEx code to remove leading [" and trailing "].
-		 //NB: the files should end with a new line, otherwise the program hangs in
-		 //	some sort of infinite loop. Open them in text editor first an append a
-		 //	carriage return.
-
+		//Use replaceAll with RegEx code to remove leading [" and trailing "].
+		//NB: the files should end with a new line, otherwise the program hangs in
+		//	some sort of infinite loop.
 		String genome = fin.readLine().replaceAll("\\[\"", "").replaceAll("\"\\]", "");
+
 		//Add the entries of the String genome to String array genomeArray using .slit("<delimiter>") 
 		genomeArray = genome.split("\", \"");
+
 		cuttingPoint = aCuttingPoint;
 		
+		//close file
 		fin.close();
 	}
 	
 	//accessor methods
 	public String[] getGenomeArray() { return genomeArray;}
+	public String getCuttingPoint() { return cuttingPoint;}
+	//public String getLastGenomeWord() { return lastGenomeWord;}
 	
 	//find the last word in the genome sequence by comparing last letters to cutting point
 	public String getLastGenomeWord()
@@ -57,9 +63,6 @@ public class Genome {
 			{
 				return arrayItem;//return to main
 			}
-
-		//		yes: move to the next char in genomearray
-		//		no: move to next word this.genomearray
 		}//end outer for loop
 		
 		//the case if they all match, then we can't tell which one is the last.
