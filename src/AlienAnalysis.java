@@ -3,18 +3,17 @@ public class AlienAnalysis {
 	{
 		//define the path to the directory containing the files
 		String filePath = "/home/dave/programming/java/workspace/alien_data/";
-		String fileType = "100k_digest_";
+		String fileType = "1k_digest_";
 		
-		//the Genome Object takes three strings for reading the file, the last ones being the cutting points.
+		//the Genome Object takes three strings for reading the file, the last ones being the
+		//	cutting points.
 		Genome genOne = new Genome(filePath,fileType,"BC");
 		Genome genTwo = new Genome(filePath,fileType,"DE");
 		Genome genThree = new Genome(filePath,fileType,"DFAD");
 		Genome genFour = new Genome(filePath,fileType,"EDA");
-		System.out.println(genTwo.getCuttingPoint());
-		System.out.println(genThree.getCuttingPoint());
 
-		//this algorithm works for the 1k files, not fails in the 10k files after reading item 267 in the array. 
-		//This is proably because the two sequences I am using equal each other, which is a
+		//this algorithm works for the 1k files, but fails in the 10k files after reading item 267 in the array. 
+		//This is probably because the two sequences I am using equal each other, which is a
 		//	weakness as my program can only sequence starting from the end. 
 		
 		String correctSequence = compareItems(genOne,genThree);
@@ -48,8 +47,9 @@ public class AlienAnalysis {
 		//Iterate through every item in the genomeArray
 		while(comparingSequences)
 		{
-			//if the two strings being compared swap places, the array from which we take values swaps places too.
-			if (swapArrays)//use the second array
+			//if the two strings being compared swap places, the array from which we take
+			//	values swap their places too.
+			if (swapArrays)//use the array the second Genome object from compareItems(1,2)
 			{//yes  
 				String[] genomeArray = genTwo.getGenomeArray();
 				int arrayLength = genomeArray.length;
@@ -79,12 +79,12 @@ public class AlienAnalysis {
 								//swap arrays
 								swapArrays = !swapArrays;
 							}
-							//restart counter
+							
 							//reset i and start from beginning till there are no more matches.
 							i = -1;
 					} else {;}//do nothing (restart for loop)	
 				}//end for loop
-			}else //use the first array from compareItems()
+			}else //use the first Genome object from compareItems(1,2)
 			{//no
 				String[] genomeArray = genOne.getGenomeArray();
 				int arrayLength = genomeArray.length;
@@ -92,7 +92,6 @@ public class AlienAnalysis {
 				//for each genomeArray (local) value:
 				for(int i = 0; i < arrayLength; i++)
 				{
-					System.out.println(i);
 					//check the boolean conditions
 					isMatch = isMatchWithEndPiece(sequenceOne.length() - startLocationModifier,sequenceOne,genomeArray[i]);
 
@@ -116,7 +115,7 @@ public class AlienAnalysis {
 								//swap arrays
 								swapArrays = !swapArrays;
 							}
-							//restart counter
+							
 							//reset i and start from beginning till there are no more matches.
 							i = -1;
 					} else {;}//do nothing (restart for loop)		
