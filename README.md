@@ -1,4 +1,4 @@
-# AlienGenomeAnalysis
+# Alien Genome Analysis and Sequencing
 GUTS Hackathon 2016
 
 Contains the Java files for the project.
