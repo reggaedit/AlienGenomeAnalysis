@@ -69,16 +69,4 @@ public class Genome {
 		return null;
 	}
 	
-	public String getGenomeWordMatch(Genome comparisonGenomeArray)
-	{
-		for (int i = 0; i < genomeArray[0].length();i++)
-		{}
-		//get an item from the this.genomearray
-		//get the longest word from another array, which is passed in as an object
-		//for each character from right of this.genomearray.entry[-1]
-		//	check if last character from this.genome array matches last char on comparison array
-		//		yes: move to the next char in genomearray
-		return "placeholder";
-	}
-	
 }
